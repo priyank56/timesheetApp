@@ -1,0 +1,18 @@
+.Loader{
+    margin-top: 20px;
+}
+.btn{
+    padding: 8px;
+    outline: none;
+    border: 1px solid black;
+    border-radius: 7px;
+    margin: 5px;
+    background-color: white;
+}
+.inp{
+    padding: 5px;
+    outline: none;
+    border: 1px solid black;
+    border-radius: 7px;
+    margin: 5px;
+}

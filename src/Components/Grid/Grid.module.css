@@ -1,0 +1,32 @@
+.tbl{
+    width: 100%;
+    height: 100%;
+    border-collapse: collapse;
+}
+.tbl th,.tbl td{
+    border: 1px solid black;
+}
+.tbl td{
+    height: 30px;
+}
+.tbl th{
+    height: 50px;
+}
+.btn{
+    padding: 7px;
+    outline: none;
+    border: 1px solid black;
+    border-radius: 7px;
+    margin: 1px 5px;
+    background-color: white;
+}
+.lbl{
+    padding: 7px;
+    margin: 1px 5px;
+}
+.tbl2{
+    margin-top: 15px;
+    width: 30%;
+    height: 100%;
+    border-collapse: collapse;
+}

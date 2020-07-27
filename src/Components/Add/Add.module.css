@@ -1,0 +1,27 @@
+.Add{
+    margin-top: 20px;
+}
+.btn{
+    padding: 8px 20px;
+    outline: none;
+    border: 1px solid black;
+    border-radius: 7px;
+    margin: 5px;
+    background-color: white;
+}
+.inp{
+    padding: 6px;
+    outline: none;
+    border: 1px solid black;
+    border-radius: 3px;
+    margin: 5px;
+}
+.des{
+    text-decoration: none ;
+    padding: 8px;
+    outline: none;
+    border: 1px solid black;
+    border-radius: 3px;
+    margin: 5px;
+    width: 570px;
+}
