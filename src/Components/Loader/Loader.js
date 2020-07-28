@@ -18,9 +18,9 @@ class Loader extends Component {
     return (
       <div className={classes.Loader}>
         <span>Select Date: </span>
-        <input type="date" className={classes.inp} id="date"></input>
-        <button className={classes.btn} onClick={taskloader}>Load</button>
-        <button className={classes.btn} onClick={this.props.loaderHandler}>Load All</button>
+        <input type="date" className={classes.inp} id="date" onChange={taskloader}></input>
+        <button className={classes.btn} onClick={taskloader}>↻ Refresh</button>
+        <button className={classes.btn} onClick={this.props.loaderHandler}>⌘ Load All</button>
         <button className={classes.btn} onClick={timesheet}>Export Timesheet as PNG</button>
       </div>
     );

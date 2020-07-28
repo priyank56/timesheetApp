@@ -3,18 +3,30 @@ import classes from "./Add.module.css";
 
 class Add extends Component {
   render() {
-    const add = () => {
+    const add = (event) => {
       const data = {
         "start-time": document.getElementById("start-time").value,
         "end-time": document.getElementById("end-time").value,
         "desc": document.getElementById("desc").value,
       };
-
-      this.props.addtask(data);
+      if(!data["start-time"] || !data["end-time"] || !data["desc"]){
+        console.log('some values may empty!');
+      }else{
+        event.preventDefault();
+        if(data["start-time"]>data["end-time"]){
+          alert('Please enter Ending time of task to Bigger than Starting time.')
+        }else{
+          document.getElementById("start-time").value="";
+          document.getElementById("end-time").value="";
+          document.getElementById("desc").value="";
+          this.props.addtask(data);
+        }
+      }
     };
     return (
       <React.Fragment>
-        <span>Start Time</span>
+        <form>
+        <span>Start Time: </span>
         <input
           type="time"
           className={classes.inp}
@@ -23,7 +35,7 @@ class Add extends Component {
           required
         />
         &emsp;
-        <span>End Time</span>
+        <span>End Time:</span>
         <input
           type="time"
           className={classes.inp}
@@ -42,11 +54,12 @@ class Add extends Component {
         />
         &emsp;
         <input
-          type="button"
+          type="submit"
           value="Add"
           className={classes.btn}
-          onClick={add}
+          onClick={(e)=>add(e)}
         />
+        </form>
       </React.Fragment>
     );
   }
