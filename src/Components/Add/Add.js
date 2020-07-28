@@ -10,7 +10,7 @@ class Add extends Component {
         "desc": document.getElementById("desc").value,
       };
       if(!data["start-time"] || !data["end-time"] || !data["desc"]){
-        console.log('some values may empty!');
+        // console.log('some values may empty!');
       }else{
         event.preventDefault();
         if(data["start-time"]>data["end-time"]){

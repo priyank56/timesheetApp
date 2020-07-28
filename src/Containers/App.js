@@ -27,7 +27,7 @@ class App extends Component {
       const tasks = this.state.tasks;
       const validtasks = tasks.filter((task) => task.date === date);
       this.setState({ loadedTasks: validtasks });
-      console.log("get a date : " + date);
+      // console.log("get a date : " + date);
     };
     const loaderInitHandler = () => {
       this.setState({ loadedTasks: null });
@@ -41,7 +41,7 @@ class App extends Component {
         endtime: data["end-time"],
         taskDetail: data["desc"],
         date: new Date().toISOString().slice(0, 10),
-        e:false,
+        e: false,
       });
       // console.log(tasks);
       this.setState({ tasks });
@@ -53,38 +53,38 @@ class App extends Component {
       this.setState({ tasks });
     };
 
-    const edittaskHandler = (id,index) => {
+    const edittaskHandler = (id, index) => {
       const tasks = [...this.state.tasks];
-      tasks[index].e=true;
-      this.setState({tasks});
-    };
-    
-    const editCompleteHandler = (id,index) => {
-      const tasks = [...this.state.tasks];
-      tasks[index].e=false;
-      this.setState({tasks});
+      tasks[index].e = true;
+      this.setState({ tasks });
     };
 
-    const sTimeChangedHandler=(event,index)=>{
-      // console.log(event.target.value);
+    const editCompleteHandler = (id, index) => {
       const tasks = [...this.state.tasks];
-      tasks[index].starttime=event.target.value;
-      this.setState({tasks});
-    }
+      tasks[index].e = false;
+      this.setState({ tasks });
+    };
 
-    const eTimeChangedHandler=(event,index)=>{
+    const sTimeChangedHandler = (event, index) => {
       // console.log(event.target.value);
       const tasks = [...this.state.tasks];
-      tasks[index].endtime=event.target.value;
-      this.setState({tasks});
-    }
+      tasks[index].starttime = event.target.value;
+      this.setState({ tasks });
+    };
 
-    const detailChangedHandler=(event,index)=>{
+    const eTimeChangedHandler = (event, index) => {
       // console.log(event.target.value);
       const tasks = [...this.state.tasks];
-      tasks[index].taskDetail=event.target.value;
-      this.setState({tasks});
-    }
+      tasks[index].endtime = event.target.value;
+      this.setState({ tasks });
+    };
+
+    const detailChangedHandler = (event, index) => {
+      // console.log(event.target.value);
+      const tasks = [...this.state.tasks];
+      tasks[index].taskDetail = event.target.value;
+      this.setState({ tasks });
+    };
     return (
       <div className="App">
         <Loader
@@ -100,12 +100,11 @@ class App extends Component {
           data={this.state.tasks}
           loadedData={this.state.loadedTasks}
           del={(index) => delHandler(index)}
-          edit={(id,index) => edittaskHandler(id,index)}
-          editComplete={(id,index) => editCompleteHandler(id,index)}
-
-          eTimeChanged={(event,index)=>eTimeChangedHandler(event,index)}
-          sTimeChanged={(event,index)=>sTimeChangedHandler(event,index)}  
-          detailChanged={(event,index)=>detailChangedHandler(event,index)}
+          edit={(id, index) => edittaskHandler(id, index)}
+          editComplete={(id, index) => editCompleteHandler(id, index)}
+          eTimeChanged={(event, index) => eTimeChangedHandler(event, index)}
+          sTimeChanged={(event, index) => sTimeChangedHandler(event, index)}
+          detailChanged={(event, index) => detailChangedHandler(event, index)}
         />
         <hr />
       </div>

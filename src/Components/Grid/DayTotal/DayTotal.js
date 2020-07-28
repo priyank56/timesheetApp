@@ -29,7 +29,7 @@ const DayTotal = (props) => {
         Total In Minutes : <span>{findMin(props)}</span>min.
       </td>
       <td className={classes.lbl}>
-        Total In Hours : <span>{findMin(props) / 60}</span>hrs.
+        Total In Hours : <span>{Math.round(findMin(props) / 60)}</span>hrs. <span>{Math.round(findMin(props) % 60)}</span>min.
       </td>
     </tr>
   );

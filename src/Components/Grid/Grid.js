@@ -38,7 +38,7 @@ const Grid = (props) => {
         });
 
   return (
-    <React.Fragment>
+    <div id="tasks-data">
       <table className={classes.tbl}>
         <thead className={classes.th}>
           <tr>
@@ -53,10 +53,10 @@ const Grid = (props) => {
       </table>
       <table className={classes.tbl2}>
         <tbody>
-          <DayTotal data={props.data} loadedData={props.loadedData}/>
+          <DayTotal data={props.data} loadedData={props.loadedData} />
         </tbody>
       </table>
-    </React.Fragment>
+    </div>
   );
 };
 
