@@ -2,7 +2,7 @@ import React from "react";
 import classes from "./DayTotal.module.css";
 
 const findMin = (props) => {
-  if (props.loadedData !== null) {
+  if (props.loadedData.length > 0) {
     return props.loadedData
       .map(
         (task) =>
@@ -29,7 +29,8 @@ const DayTotal = (props) => {
         Total In Minutes : <span>{findMin(props)}</span>min.
       </td>
       <td className={classes.lbl}>
-        Total In Hours : <span>{Math.round(findMin(props) / 60)}</span>hrs. <span>{Math.round(findMin(props) % 60)}</span>min.
+        Total In Hours : <span>{Math.floor(findMin(props) / 60)}</span>hrs.{" "}
+        <span>{findMin(props) % 60}</span>min.
       </td>
     </tr>
   );

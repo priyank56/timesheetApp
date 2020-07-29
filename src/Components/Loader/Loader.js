@@ -1,57 +1,46 @@
 import React, { Component } from "react";
 import classes from "./Loader.module.css";
-
-// import {
-//   // exportComponentAsJPEG,
-//   // exportComponentAsPDF,
-//   exportComponentAsPNG,
-// } from "react-component-export-image";
-
-// class ComponentToPrint extends Component {
-//   render() {
-//     // console.log(document.getElementById('tasks-data'))
-//     return document.getElementById('tasks-data');
-//   }
-// }
+import html2canvas from "html2canvas";
 
 class Loader extends Component {
-  constructor(props) {
-    super(props);
-    this.componentRef = React.createRef();
-  }
-
   render() {
-    const taskloader = () => {
-      const date = document.getElementById("date").value;
-      if (date === "") {
-        // console.log("date not selected");
-      } else {
-        // console.log(date);
-        this.props.load(date);
+    const printDocument = () => {
+      var tble = document.getElementById("table");
+      var row = tble.rows;
+      var cell=[];
+      for (var i = 0; i < row.length; i++) {
+        cell[i]=row[i].cells[4].innerHTML;
+        row[i].deleteCell(4);
+      }
+      html2canvas(document.getElementById("tasks-data")).then((canvas) => {
+        var link = document.createElement("a");
+        link.download = "time-tracker";
+        link.href = canvas.toDataURL();
+        link.click();
+      });
+      for (var j = 0; j < row.length; j++) {
+        row[j].insertCell(4).innerHTML=cell[j];
       }
     };
-
     return (
       <React.Fragment>
-        {/* <ComponentToPrint ref={this.componentRef} /> */}
         <div className={classes.Loader}>
           <span>Select Date: </span>
           <input
             type="date"
             className={classes.inp}
             id="date"
-            onChange={taskloader}
-          ></input>
-          <button className={classes.btn} onClick={taskloader}>
+            onChange={this.props.load}
+          />
+          {/* <button className={classes.btn} onClick={taskloader}>
             ↻ Refresh
-          </button>
+          </button> */}
           <button className={classes.btn} onClick={this.props.loaderHandler}>
             ⌘ Load All
           </button>
           <button
             className={classes.btn}
-            // onClick={() => exportComponentAsPNG(this.componentRef)}
-            onClick={()=>console.log('we will add this functionality soon.')}
+            onClick={printDocument}
           >
             Export Timesheet as PNG
           </button>

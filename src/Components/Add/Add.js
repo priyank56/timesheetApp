@@ -8,9 +8,10 @@ class Add extends Component {
         "start-time": document.getElementById("start-time").value,
         "end-time": document.getElementById("end-time").value,
         "desc": document.getElementById("desc").value,
+        "date": document.getElementById("date").value,
       };
       if(!data["start-time"] || !data["end-time"] || !data["desc"]){
-        // console.log('some values may empty!');
+        console.log('some values may empty!');
       }else{
         event.preventDefault();
         if(data["start-time"]>data["end-time"]){
@@ -23,6 +24,8 @@ class Add extends Component {
         }
       }
     };
+    
+
     return (
       <React.Fragment>
         <form>

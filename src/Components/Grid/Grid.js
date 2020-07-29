@@ -4,42 +4,25 @@ import DayTotal from "./DayTotal/DayTotal";
 import Row from "./Row/Row";
 
 const Grid = (props) => {
-  const row =
-    props.loadedData != null
-      ? props.loadedData.map((task, index) => {
-          return (
-            <Row
-              data={task}
-              key={task.id}
-              index={index}
-              del={(index) => props.del(index)}
-              edit={(id) => props.edit(id, index)}
-              editComplete={(id) => props.editComplete(id, index)}
-              sTimeChanged={(event) => props.sTimeChanged(event, index)}
-              eTimeChanged={(event) => props.eTimeChanged(event, index)}
-              detailChanged={(event) => props.detailChanged(event, index)}
-            />
-          );
-        })
-      : props.data.map((task, index) => {
-          return (
-            <Row
-              data={task}
-              key={task.id}
-              index={index}
-              del={(index) => props.del(index)}
-              edit={(id) => props.edit(id, index)}
-              editComplete={(id) => props.editComplete(id, index)}
-              sTimeChanged={(event) => props.sTimeChanged(event, index)}
-              eTimeChanged={(event) => props.eTimeChanged(event, index)}
-              detailChanged={(event) => props.detailChanged(event, index)}
-            />
-          );
-        });
+  const row = props.loadedData.map((task, index) => {
+    return (
+      <Row
+        data={task}
+        key={task.id}
+        index={index}
+        del={(index) => props.del(index)}
+        edit={(id) => props.edit(id, index)}
+        editComplete={(id) => props.editComplete(id, index)}
+        sTimeChanged={(event) => props.sTimeChanged(event, index)}
+        eTimeChanged={(event) => props.eTimeChanged(event, index)}
+        detailChanged={(event) => props.detailChanged(event, index)}
+      />
+    );
+  });
 
   return (
-    <div id="tasks-data">
-      <table className={classes.tbl}>
+    <div id="tasks-data" className={classes.Grid}>
+      <table id="table" className={classes.tbl}>
         <thead className={classes.th}>
           <tr>
             <th>Start time</th>

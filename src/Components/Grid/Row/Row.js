@@ -3,11 +3,6 @@ import classes from "../Grid.module.css";
 import classesAdd from "../../Add/Add.module.css";
 
 class Row extends Component {
-  // const cnvmin=(hr)=>{
-  //   return hr*60;
-  // }
-  // let val=this.props.data.endtime - this.props.data.starttime;
-  // let val=cnvmin(this.props.data.endtime);
   render() {
     
     const cnvTomin=(startTime,endTime)=>{
