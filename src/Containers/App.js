@@ -41,41 +41,47 @@ class App extends Component {
       await this.setState({ tasks: tasks });
       await loadtaskHandler();
     };
-
-    const delHandler = (index) => {
+    
+    const delHandler = async (id) => {
       const tasks = [...this.state.tasks];
-      tasks.splice(index, 1);
-      this.setState({ tasks: tasks });
+      tasks.splice(tasks.findIndex(task=>task.id===id), 1);
+      await this.setState({ tasks: tasks });
+      await loadtaskHandler();
     };
 
-    const edittaskHandler = (id, index) => {
+    const edittaskHandler = async (id) => {
       const tasks = [...this.state.tasks];
-      tasks[index].e = true;
-      this.setState({ tasks: tasks });
+      tasks[tasks.findIndex(task=>task.id===id)].e = true;
+      await this.setState({ tasks: tasks });
+      await loadtaskHandler();
     };
 
-    const editCompleteHandler = (id, index) => {
+    const editCompleteHandler = async (id) => {
       const tasks = [...this.state.tasks];
-      tasks[index].e = false;
-      this.setState({ tasks: tasks });
+      tasks[tasks.findIndex(task=>task.id===id)].e = false;
+      await this.setState({ tasks: tasks });
+      await loadtaskHandler();
     };
 
-    const sTimeChangedHandler = (event, index) => {
+    const sTimeChangedHandler = async (event, id) => {
       const tasks = [...this.state.tasks];
-      tasks[index].starttime = event.target.value;
-      this.setState({ tasks: tasks });
+      tasks[tasks.findIndex(task=>task.id===id)].starttime = event.target.value;
+      await this.setState({ tasks: tasks });
+      await loadtaskHandler();
     };
 
-    const eTimeChangedHandler = (event, index) => {
+    const eTimeChangedHandler = async (event, id) => {
       const tasks = [...this.state.tasks];
-      tasks[index].endtime = event.target.value;
-      this.setState({ tasks: tasks });
+      tasks[tasks.findIndex(task=>task.id===id)].endtime = event.target.value;
+      await this.setState({ tasks: tasks });
+      await loadtaskHandler();
     };
 
-    const detailChangedHandler = (event, index) => {
+    const detailChangedHandler = async (event, id) => {
       const tasks = [...this.state.tasks];
-      tasks[index].taskDetail = event.target.value;
-      this.setState({ tasks: tasks });
+      tasks[tasks.findIndex(task=>task.id===id)].taskDetail = event.target.value;
+      await this.setState({ tasks: tasks });
+      await loadtaskHandler();
     };
     return (
       <div className="App">
@@ -90,12 +96,12 @@ class App extends Component {
         <Grid
           data={this.state.tasks}
           loadedData={this.state.loadedTasks}
-          del={(index) => delHandler(index)}
-          edit={(id, index) => edittaskHandler(id, index)}
-          editComplete={(id, index) => editCompleteHandler(id, index)}
-          eTimeChanged={(event, index) => eTimeChangedHandler(event, index)}
-          sTimeChanged={(event, index) => sTimeChangedHandler(event, index)}
-          detailChanged={(event, index) => detailChangedHandler(event, index)}
+          del={(id) => delHandler(id)}
+          edit={(id) => edittaskHandler(id)}
+          editComplete={(id) => editCompleteHandler(id)}
+          eTimeChanged={(event, id) => eTimeChangedHandler(event, id)}
+          sTimeChanged={(event, id) => sTimeChangedHandler(event, id)}
+          detailChanged={(event, id) => detailChangedHandler(event, id)}
         />
         <hr />
       </div>

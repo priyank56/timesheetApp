@@ -4,23 +4,27 @@ import html2canvas from "html2canvas";
 
 class Loader extends Component {
   render() {
-    const printDocument = () => {
-      var tble = document.getElementById("table");
-      var row = tble.rows;
-      var cell=[];
-      for (var i = 0; i < row.length; i++) {
-        cell[i]=row[i].cells[4].innerHTML;
-        row[i].deleteCell(4);
-      }
+    const printDocument = async() => {
+
+      // var tble = document.getElementById("table");
+      // var row = tble.rows;
+      // var cell=[];
+      // for (var i = 0; i < row.length; i++) {
+      //   cell[i]=row[i].cells[4].innerHTML;
+      //   console.log(cell[i]);
+      //   row[i].deleteCell(4);
+      // }
+
       html2canvas(document.getElementById("tasks-data")).then((canvas) => {
         var link = document.createElement("a");
         link.download = "time-tracker";
         link.href = canvas.toDataURL();
         link.click();
       });
-      for (var j = 0; j < row.length; j++) {
-        row[j].insertCell(4).innerHTML=cell[j];
-      }
+
+      // for (var j = 0; j < row.length; j++) {
+      //   row[j].insertCell(4).innerHTML=cell[j];
+      // }
     };
     return (
       <React.Fragment>

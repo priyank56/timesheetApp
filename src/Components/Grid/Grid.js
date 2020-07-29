@@ -10,12 +10,12 @@ const Grid = (props) => {
         data={task}
         key={task.id}
         index={index}
-        del={(index) => props.del(index)}
-        edit={(id) => props.edit(id, index)}
-        editComplete={(id) => props.editComplete(id, index)}
-        sTimeChanged={(event) => props.sTimeChanged(event, index)}
-        eTimeChanged={(event) => props.eTimeChanged(event, index)}
-        detailChanged={(event) => props.detailChanged(event, index)}
+        del={(id) => props.del(id)}
+        edit={(id) => props.edit(id)}
+        editComplete={(id) => props.editComplete(id)}
+        sTimeChanged={(event,id) => props.sTimeChanged(event,id)}
+        eTimeChanged={(event,id) => props.eTimeChanged(event,id)}
+        detailChanged={(event,id) => props.detailChanged(event,id)}
       />
     );
   });
